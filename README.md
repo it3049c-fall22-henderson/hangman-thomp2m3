@@ -1,6 +1,6 @@
 Hangman
 =====================
-[![Assignment Checks](https://github.com/IT3049C/Hangman/actions/workflows/classroom.yml/badge.svg)](https://github.com/IT3049C/Hangman/actions/workflows/classroom.yml)
+[![Assignment Checks](https://github.com/it3049c-fall22-henderson/hangman-thomp2m3/actions/workflows/classroom.yml/badge.svg)](https://github.com/it3049c-fall22-henderson/hangman-thomp2m3/actions/workflows/classroom.yml)
 
 Instructions to this assignment can be found [here](#).
 
