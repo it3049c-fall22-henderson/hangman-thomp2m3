@@ -44,7 +44,13 @@ class Hangman {
    * @param {string} letter the guessed letter.
    */
   guess(letter) {
+    const guessInput = document.getElementById(`guessInput`);
+
     // Check if nothing was provided and throw an error if so
+    if (guessInput.value == '' ) {
+      window.prompt("You really should guess a letter..");
+      return false;
+    }
     // Check for invalid cases (numbers, symbols, ...) throw an error if it is
     // Check if more than one letter was provided. throw an error if it is.
     // if it's a letter, convert it to lower case for consistency.
