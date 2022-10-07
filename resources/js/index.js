@@ -28,14 +28,16 @@ try {
   //       2. show the gameWrapper
   //       3. call the game getWordHolderText and set it to the wordHolderText
   //       4. call the game getGuessessText and set it to the guessesText
-  let hangman;
+  let hangman = new Hangman(canvas);
 
   difficultySelectForm.addEventListener(`submit`, function (event) {
     event.preventDefault();
-    const difficulty = difficultySelect;
-    hangman = new Hangman(canvas);
-    startWrapper.classList.add('hidden');
-    gameWrapper.classList.remove('hidden');
+    const difficulty = difficultySelect.value;
+    hangman.start(difficulty, function() {
+      startWrapper.classList.add('hidden');
+      gameWrapper.classList.remove('hidden');
+      wordHolderText.innerHTML = hangman.getWordHolderText();
+    });
   });
 
   // add a submit Event Listener to the guessForm
@@ -53,7 +55,7 @@ try {
   // if the game is won or lost, show an alert.
   guessForm.addEventListener(`submit`, function (e) {
     e.preventDefault();
-    hangman.guess(guessInput);
+    hangman.guess(guessInput.value);
   });
 
   // add a click Event Listener to the resetGame button
