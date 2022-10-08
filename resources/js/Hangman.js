@@ -114,23 +114,23 @@ class Hangman {
     // declaring variables
     let i;
     let x;
-    let unk = 0;
+    let correct = 0;
     let wordLength = this.word.length;
     let guessLength = this.guesses.length;
 
     // nested for loop to compare the guesses array to the word array
     // this will use values of the guesses array and compare them to
-    // the characters of the string array, incrementing unk when equality is found
+    // the characters of the string array, incrementing correct when equality is found
     for (i = 0; i < guessLength; i++) {
       for (x = 0; x < wordLength; x++) {
         if (this.word.charAt(x) == this.guesses[i]) {
-          unk++;
+          correct++;
         }
       }
     }
 
     // if zero, set both didWin, and isOver to true
-    if (unk === wordLength) {
+    if (correct === wordLength) {
       this.isOver = true;
       this.didWin = true;
     }
