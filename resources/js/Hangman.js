@@ -111,18 +111,26 @@ class Hangman {
   }
 
   checkWin() {
-    // using the word and the guesses array, figure out how many remaining unknowns.
-    let remainingLetters = this.word.toString().length;
+    // declaring variables
+    let i;
+    let x;
+    let unk = 0;
+    let wordLength = this.word.length;
+    let guessLength = this.guesses.length;
 
-    this.word.array.forEach((element1) => this.guesses.array.forEach((element2) => {
-      if (element1 === element2) {
-        remainingLetters--;
-      } 
-      return remainingLetters;
-    }));
+    // nested for loop to compare the guesses array to the word array
+    // this will use values of the guesses array and compare them to
+    // the characters of the string array, incrementing unk when equality is found
+    for (i = 0; i < guessLength; i++) {
+      for (x = 0; x < wordLength; x++) {
+        if (this.word.charAt(x) == this.guesses[i]) {
+          unk++;
+        }
+      }
+    }
 
     // if zero, set both didWin, and isOver to true
-    if (remainingLetters === 0) {
+    if (unk === wordLength) {
       this.isOver = true;
       this.didWin = true;
     }
@@ -165,11 +173,19 @@ class Hangman {
    * i.e.: if the word is BOOK, and the letter O has been guessed, this would return _ O O _
    */
   getWordHolderText() {
-    let disguisedWord = this.word;
+    // declare variables
+    let wordArray = this.word.split('');
+    let wordHolderTextArray = "";
+    let i;
 
-    disguisedWord.replace(/^[a-zA-Z]*$/g, "_").split("").join(" ")
-
-    return disguisedWord;
+    for (i = 0; i < this.word.length; i++) {
+      if (this.guesses.includes(wordArray[i])) {
+        wordHolderTextArray += wordArray[i];
+      } else {
+        wordHolderTextArray += "_";
+      }
+    }
+    return wordHolderTextArray;
   }
 
   /**
