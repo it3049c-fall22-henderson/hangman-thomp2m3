@@ -25,7 +25,7 @@ class Hangman {
    * */
   getRandomWord(difficulty) {
     return fetch(
-      `https://hangman-micro-service.herokuapp.com?difficulty=${difficulty}`
+      `https://hangman-micro-service.herokuapp.com/?difficulty=${difficulty}`
     )
       .then((r) => r.json())
       .then((r) => r.word);
@@ -36,10 +36,12 @@ class Hangman {
    * @param {string} difficulty a difficulty string to be passed to the getRandomWord Function
    * @param {function} next callback function to be called after a word is reveived from the API.
    */
-  start(difficulty, next) {
+  async start(difficulty, next) {
     // get word and set it to the class's this.word
-    const returnedWord = this.getRandomWord(difficulty);
-    this.word = returnedWord;
+    // changed this to an asynchronious function as I was having issues with downstream code processing
+    // before the word was retrieved from the API
+    const selectedDifficulty = await this.getRandomWord(difficulty);
+    this.word = selectedDifficulty;
 
     // clear canvas
     this.clearCanvas();
@@ -110,7 +112,14 @@ class Hangman {
 
   checkWin() {
     // using the word and the guesses array, figure out how many remaining unknowns.
-    let remainingLetters = this.word.length;
+    let remainingLetters = this.word.toString().length;
+
+    this.word.array.forEach((element1) => this.guesses.array.forEach((element2) => {
+      if (element1 === element2) {
+        remainingLetters--;
+      } 
+      return remainingLetters;
+    }));
 
     // if zero, set both didWin, and isOver to true
     if (remainingLetters === 0) {
@@ -156,14 +165,9 @@ class Hangman {
    * i.e.: if the word is BOOK, and the letter O has been guessed, this would return _ O O _
    */
   getWordHolderText() {
-    let disguisedWord = "The Word: "
-    let wordArray = this.word.toString().split();
+    let disguisedWord = this.word;
 
-    for (let i = 0; i < wordArray.length; i++) {
-      wordArray[i] = "_";
-    }
-
-    disguisedWord += wordArray.join(" ");
+    disguisedWord.replace(/^[a-zA-Z]*$/g, "_").split("").join(" ")
 
     return disguisedWord;
   }
@@ -175,7 +179,11 @@ class Hangman {
    * Hint: use the Array.prototype.join method.
    */
   getGuessesText() {
-    return ``;
+    let submittedGuesses = "Picked so far: ";
+
+    submittedGuesses += this.guesses.join(" | ")
+
+    return submittedGuesses;
   }
 
   /**
@@ -195,15 +203,51 @@ class Hangman {
     this.ctx.fillRect(10, 410, 175, 10); // Base
   }
 
-  drawHead() {}
+  drawHead() {
+    this.ctx.lineWidth = 4;
+    this.ctx.beginPath();
+    this.ctx.arc(245, 40, 35, 0, Math.PI*2, false);
+    this.ctx.closePath();
+    this.ctx.stroke();
+  }
 
-  drawBody() {}
+  drawBody() {
+    this.ctx.lineWidth = 4;
+    this.ctx.beginPath();
+    this.ctx.moveTo(245, 75);
+    this.ctx.lineTo(245, 140);
+    this.ctx.stroke();
+  }
 
-  drawLeftArm() {}
+  drawLeftArm() {
+    this.ctx.lineWidth = 4;
+    this.ctx.beginPath();
+    this.ctx.moveTo(245, 80);
+    this.ctx.lineTo(130, 245);
+    this.ctx.stroke();
+  }
 
-  drawRightArm() {}
+  drawRightArm() {
+    this.ctx.lineWidth = 4;
+    this.ctx.beginPath();
+    this.ctx.moveTo(245, 80);
+    this.ctx.lineTo(60, 245);
+    this.ctx.stroke();
+  }
 
-  drawLeftLeg() {}
+  drawLeftLeg() {
+    this.ctx.lineWidth = 4;
+    this.ctx.beginPath();
+    this.ctx.moveTo(245, 145);
+    this.ctx.lineTo(115, 180);
+    this.ctx.stroke();
+  }
 
-  drawRightLeg() {}
+  drawRightLeg() {
+    this.ctx.lineWidth = 4;
+    this.ctx.beginPath();
+    this.ctx.moveTo(245, 145);
+    this.ctx.lineTo(75, 180);
+    this.ctx.stroke();
+  }
 }
