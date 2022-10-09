@@ -36,10 +36,11 @@
   border-radius: 4px;
   border-color: red;
   background-color: red;
+  height: 40px;
 }
 
 #resetGame:hover {
-  filter: brightness(0.75);
+  filter: brightness(0.82);
 }
 
 .hTitle {
