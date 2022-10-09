@@ -182,7 +182,7 @@ class Hangman {
       if (this.guesses.includes(wordArray[i])) {
         wordHolderTextArray += wordArray[i];
       } else {
-        wordHolderTextArray += "_";
+        wordHolderTextArray += "_ ";
       }
     }
     return wordHolderTextArray;
@@ -222,7 +222,7 @@ class Hangman {
   drawHead() {
     this.ctx.lineWidth = 4;
     this.ctx.beginPath();
-    this.ctx.arc(245, 40, 35, 0, Math.PI*2, false);
+    this.ctx.arc(250, 95, 35, 0, Math.PI*2, false);
     this.ctx.closePath();
     this.ctx.stroke();
   }
@@ -230,40 +230,40 @@ class Hangman {
   drawBody() {
     this.ctx.lineWidth = 4;
     this.ctx.beginPath();
-    this.ctx.moveTo(245, 75);
-    this.ctx.lineTo(245, 140);
+    this.ctx.moveTo(250, 130);
+    this.ctx.lineTo(250, 240);
     this.ctx.stroke();
   }
 
   drawLeftArm() {
     this.ctx.lineWidth = 4;
     this.ctx.beginPath();
-    this.ctx.moveTo(245, 80);
-    this.ctx.lineTo(130, 245);
+    this.ctx.moveTo(250, 160);
+    this.ctx.lineTo(185, 250);
     this.ctx.stroke();
   }
 
   drawRightArm() {
     this.ctx.lineWidth = 4;
     this.ctx.beginPath();
-    this.ctx.moveTo(245, 80);
-    this.ctx.lineTo(60, 245);
+    this.ctx.moveTo(250, 160);
+    this.ctx.lineTo(315, 250);
     this.ctx.stroke();
   }
 
   drawLeftLeg() {
     this.ctx.lineWidth = 4;
     this.ctx.beginPath();
-    this.ctx.moveTo(245, 145);
-    this.ctx.lineTo(115, 180);
+    this.ctx.moveTo(250, 240);
+    this.ctx.lineTo(185, 335);
     this.ctx.stroke();
   }
 
   drawRightLeg() {
     this.ctx.lineWidth = 4;
     this.ctx.beginPath();
-    this.ctx.moveTo(245, 145);
-    this.ctx.lineTo(75, 180);
+    this.ctx.moveTo(250, 240);
+    this.ctx.lineTo(315, 335);
     this.ctx.stroke();
   }
 }
