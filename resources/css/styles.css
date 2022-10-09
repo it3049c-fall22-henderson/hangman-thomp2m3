@@ -27,7 +27,7 @@
 
 #hangmanCanvas { 
   position:absolute; 
-  top: 250;bottom: 0;right: 0;left: 0; 
+  top: 350;bottom: 0;right: 0;left: 0; 
   margin:auto; 
 }
 
@@ -44,5 +44,5 @@
 .hTitle {
   font-weight: 900;
   font-size: 3.5em;
-  animation: pulse 2s;
+  animation: pulse 4s;
 }
