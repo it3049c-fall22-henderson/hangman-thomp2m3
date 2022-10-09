@@ -62,14 +62,13 @@ try {
     guessInput.value = "";
 
     if (hangman.isOver === true) {
-      guessForm.classList.add('disabled');
-      guessInput.classList.add('disabled');
-      resetGame.classList.remove('hidden');
       if (hangman.didWin === true) {
         alert("You have won Hangman!");
       } else {
         alert("You have lost Hangman!");
       }
+      resetGame.classList.remove('hidden');
+      document.getElementById(`guessForm`).disabled = true;
     }
   });
 
