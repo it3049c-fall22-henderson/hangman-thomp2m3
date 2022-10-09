@@ -67,8 +67,9 @@ try {
       } else {
         alert("You have lost Hangman!");
       }
+      guessForm.classList.add('disabled');
+      guessInput.classList.add('disabled');
       resetGame.classList.remove('hidden');
-      document.getElementById(`guessForm`).disabled = true;
     }
   });
 
@@ -78,7 +79,7 @@ try {
   resetGame.addEventListener(`click`, function (e) {
     startWrapper.classList.remove('hidden');
     gameWrapper.classList.add('hidden');
-    difficultySelect.value[0];
+    location.reload();
   });
 } catch (error) {
   console.error(error);
