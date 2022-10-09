@@ -8,11 +8,13 @@
             }
         </style>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="resources/css/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     </head>
 
     <body>
         <div class="container">
-        <h1>Hangman</h1>
+        <h1 class="hTitle">Hangman</h1>
             <div id="startWrapper">
                 <form id="difficultySelect">
                     <select id="difficulty">
@@ -30,14 +32,17 @@
                         id="guessInput"
                         placeholder="Guess a letter!"
                     />
-                    <input type="submit" id="guessSubmitButton" class="btn btn-warning" value="Guess" />
+                    <input type="submit" id="guessSubmitButton" class="btn btn-primary" value="Guess" />
                 </form>
-                <button type="button" id="resetGame" class="hidden">
-                    Play Again!
-                </button>
-                <div id="guesses"></div>
+                <div>
+                    <button type="button" id="resetGame" class="hidden">
+                        Play Again!
+                    </button>
+                </div>
                 <br />
-                <div id="wordHolder"></div>
+                <div id="guesses" class="p-3 mb-2 bg-primary text-white"></div>
+                <br />
+                <div id="wordHolder" class="p-3 mb-2 bg-info text-white"></div>
                 <br />
                 <canvas
                     id="hangmanCanvas"
