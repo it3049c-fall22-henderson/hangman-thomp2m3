@@ -1,0 +1,52 @@
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}
+
+#guesses, #wordholder {
+  border-radius: 15px 50px 30px;
+  font-weight: bold;
+  font-size: 150%;
+}
+
+#wordholder {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#hangmanCanvas { 
+  position:absolute; 
+  top: 350;bottom: 0;right: 0;left: 0; 
+  margin:auto; 
+}
+
+#resetGame {
+  border-radius: 4px;
+  border-color: red;
+  background-color: red;
+  height: 40px;
+}
+
+#resetGame:hover {
+  filter: brightness(0.82);
+}
+
+.hTitle {
+  font-weight: 900;
+  font-size: 3.5em;
+  animation: pulse 4s;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #1c73ff;
+}
