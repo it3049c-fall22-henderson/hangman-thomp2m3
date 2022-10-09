@@ -80,6 +80,7 @@ try {
     startWrapper.classList.remove('hidden');
     gameWrapper.classList.add('hidden');
     location.reload();
+    difficultySelect.value[0];
   });
 } catch (error) {
   console.error(error);
