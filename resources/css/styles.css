@@ -45,4 +45,6 @@
   font-weight: 900;
   font-size: 3.5em;
   animation: pulse 4s;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #1c73ff;
 }
